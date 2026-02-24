@@ -1,0 +1,948 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE/">
+      
+      
+        <link rel="next" href="../%E8%8E%B7%E5%8F%96%E6%8C%81%E4%BB%93%E4%BF%A1%E6%81%AF/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>策略编写 - Leopardseek</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Leopardseek" class="md-header__button md-logo" aria-label="Leopardseek" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Leopardseek
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              策略编写
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Leopardseek" class="md-nav__button md-logo" aria-label="Leopardseek" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Leopardseek
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%80%BB%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%AE%89%E8%A3%85/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安装
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全局配置
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    策略编写
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    策略编写
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略逻辑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略编写
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="策略编写">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易信号的生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%8E%B7%E5%8F%96%E6%8C%81%E4%BB%93%E4%BF%A1%E6%81%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    获取持仓信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%8E%B7%E5%8F%96k%E7%BA%BF%E7%AD%89%E8%A1%8C%E6%83%85%E4%BF%A1%E6%81%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    获取k线等行情信息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%8B%E5%8D%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    下单
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    记录策略日志
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    常见问题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略逻辑
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略编写
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="策略编写">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        策略配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类的实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易信号的生成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">策略编写</h1>
+<p>本页以一个简单的基于 MACD 指标的策略为例，详细介绍了如何使用 LeopardSeek 编写策略。</p>
+<h2 id="_2">策略逻辑</h2>
+<p>当 MACD 指标中，根据 DIFF 与 MACD 值的正负性判断开仓方向，如果 DIFF 与 MACD 同为正，则开多仓。若其一不再为正值，则平多仓。反之，若 DIFF 与 MACD 同为负，则开空仓。若其一不再为负值，则平多仓。</p>
+<p>一组多方向的交易与一组空方向的交易示例如下图所示
+<img alt="MACD策略示意" src="../images/macd_strategy_example.png" /></p>
+<h2 id="_3">策略编写</h2>
+<p>LeopardSeek 中的策略以类对象的形式构建。这些类对象包含将市场数据转换为交易信号所需的核心逻辑。一般而言，策略类会接收交易标的名称和策略参数完成实例化，当然您可以通过策略配置文件自定义传入的参数内容。</p>
+<h3 id="_4">策略配置</h3>
+<p>策略配置文件用于定义该策略的所有参数，以及该策略要交易的目标品种。配置文件中 PARAMETERS 字段下的参数会被传入你的策略类中，供你在策略逻辑里调用。</p>
+<p>用户在文件根目录下的 config 文件夹中创建于修改与策略同名的 yaml 文件，用来编辑策略配置。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># macd.yaml
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>NAME: &#39;macd&#39;                    # 策略名
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>MODULE: &#39;macd&#39;                  # 策略所在模块（与策略名保持一致）
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>CLASS: &#39;MACD&#39;                   # 策略类名
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>INTERVAL: &#39;5min&#39;                # 策略执行周期
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>PARAMETERS:                     # 策略参数
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  macd_fast: 12
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  macd_slow: 26
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  macd_smoothing: 9
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>WATCHLIST: [&#39;ao2605&#39;]           # 策略执行的资产代码
+</span></code></pre></div>
+<h3 id="_5">类的实现</h3>
+<p>尽管策略的构建方式极为灵活，但策略类必须包含 <strong>init</strong> 初始化方法和一个名为 generate_signal 的信号生成方法。其中，<strong>init</strong> 方法会在每次实例化策略时被调用。</p>
+<p>默认情况下，LeopardSeek 实例化策略时会传入四个命名参数：</p>
+<ol>
+<li>
+<p>该次实例化中要交易的资产代码（参数名：instrument， 参数类型：str）；</p>
+</li>
+<li>
+<p>策略参数（参数名：parameters， 参数类型：dict）；</p>
+</li>
+<li>
+<p>交易所接口（参数名：broker， 参数类型：Broker）；</p>
+</li>
+<li>
+<p>本资产代码专用的日志（参数名：logger， 参数类型：logging.Logger）</p>
+</li>
+</ol>
+<p>。</p>
+<p>除 <strong>init</strong> 方法外，策略类必须实现 generate_signal 方法。每个策略执行周期，LeopardSeek 会调用该方法，且要求该方法返回一个交易委托单（Order）对象或委托单列表：</p>
+<p>做多委托单可通过创建 Order 对象时指定 direction=Direction.Long 实现，做空委托单则指定 direction=Direction.Long。LeopardSeek 中提供了诸多便捷的枚举，详细定义请阅读<a href="../%E4%B8%8B%E5%8D%95/">下单</a>。</p>
+<p>若本次数据更新无交易信号，可直接返回 None 或者空列表([ ])；</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">talib</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ta</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">autotrader.strategy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Strategy</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">autotrader.brokers.broker</span><span class="w"> </span><span class="kn">import</span> <span class="n">Broker</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">autotrader.comms.Enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Direction</span><span class="p">,</span> <span class="n">Offset</span><span class="p">,</span> <span class="n">OrderType</span><span class="p">,</span> <span class="n">CandlesPeriod</span><span class="p">,</span> <span class="n">PosDirection</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kn">from</span><span class="w"> </span><span class="nn">autotrader.brokers.lzdc_order</span><span class="w"> </span><span class="kn">import</span> <span class="n">Order</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">MACD</span><span class="p">(</span><span class="n">Strategy</span><span class="p">):</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">instrument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">broker</span><span class="p">:</span> <span class="n">Broker</span><span class="p">,</span> <span class="n">logger</span><span class="p">:</span> <span class="n">Logger</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MACD&quot;</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">instrument</span> <span class="o">=</span> <span class="n">instrument</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">broker</span> <span class="o">=</span> <span class="n">broker</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>        <span class="c1"># 从self.parameters中获取计算需要的参数</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fast_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;macd_fast&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">slow_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;macd_slow&#39;</span><span class="p">,</span> <span class="mi">26</span><span class="p">)</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">macd_period</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;macd_smoothing&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>        <span class="c1"># 初始化策略运行需要属性</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">previous_diff</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">previous_macd</span> <span class="o">=</span> <span class="kc">None</span>
+</span></code></pre></div>
+<h3 id="_6">交易信号的生成</h3>
+<p>针对 MACD 交易策略，此方法可将策略规则转化为代码实现。</p>
+<p>以下为此 MACD 示例策略的总览，包括了获取行情信息，交易信号判断，订单生成等多个部分。每个部分的细节见本文档的其他介绍。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">generate_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd">        生成基于MACD的趋势信号</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="c1"># 获取价格数据, 本次调用获取了本产品1000根1分钟级的k线数据</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">df</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">get_candles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span> <span class="n">granularity</span><span class="o">=</span><span class="n">CandlesPeriod</span><span class="o">.</span><span class="n">MIN_1</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        <span class="n">close</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">current_price</span> <span class="o">=</span> <span class="n">close</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="n">ema20</span> <span class="o">=</span> <span class="n">ta</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fast_period</span><span class="p">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="n">ema80</span> <span class="o">=</span> <span class="n">ta</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">close</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">slow_period</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="n">DIFF</span> <span class="o">=</span> <span class="n">ema20</span> <span class="o">-</span> <span class="n">ema80</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="n">DEA</span> <span class="o">=</span> <span class="n">ta</span><span class="o">.</span><span class="n">EMA</span><span class="p">(</span><span class="n">DIFF</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">macd_period</span><span class="p">)</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">MACD</span> <span class="o">=</span> <span class="p">(</span><span class="n">DIFF</span> <span class="o">-</span> <span class="n">DEA</span><span class="p">)</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>        <span class="n">latest_fix_diff</span> <span class="o">=</span> <span class="n">DIFF</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="n">latest_fix_macd</span> <span class="o">=</span> <span class="n">MACD</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="n">signal</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="k">if</span> <span class="n">latest_fix_diff</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">latest_fix_macd</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>            <span class="n">signal</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="k">elif</span> <span class="n">latest_fix_diff</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">latest_fix_macd</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>            <span class="n">signal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">previous_diff</span> <span class="o">=</span> <span class="n">latest_fix_diff</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">previous_macd</span> <span class="o">=</span> <span class="n">latest_fix_macd</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="k">return</span> <span class="n">signal</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>
+</span><span id="__span-2-32"><a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">generate_signal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-2-33"><a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-34"><a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="sd">        生成交易信号</span>
+</span><span id="__span-2-35"><a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="__span-2-36"><a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>        <span class="c1"># 获取持仓信息</span>
+</span><span id="__span-2-37"><a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>        <span class="n">holding_direction</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-38"><a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>        <span class="n">holding_size</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-39"><a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="n">current_profit</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="__span-2-40"><a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="n">position_dicts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">get_positions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">)</span>
+</span><span id="__span-2-41"><a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        <span class="k">if</span> <span class="n">position_dicts</span><span class="p">:</span>
+</span><span id="__span-2-42"><a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>            <span class="k">for</span> <span class="n">position_dict</span> <span class="ow">in</span> <span class="n">position_dicts</span><span class="p">:</span>
+</span><span id="__span-2-43"><a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>                <span class="k">if</span> <span class="n">position_dict</span><span class="p">[</span><span class="s2">&quot;direction&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">PosDirection</span><span class="o">.</span><span class="n">Long</span><span class="p">:</span>  <span class="c1"># 多头</span>
+</span><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>                    <span class="n">current_profit</span> <span class="o">=</span> <span class="n">position_dict</span><span class="p">[</span><span class="s1">&#39;positionProfit&#39;</span><span class="p">]</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>                    <span class="n">holding_direction</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>                    <span class="n">holding_size</span> <span class="o">=</span> <span class="n">position_dict</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>                <span class="k">elif</span> <span class="n">position_dict</span><span class="p">[</span><span class="s2">&quot;direction&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">PosDirection</span><span class="o">.</span><span class="n">Short</span><span class="p">:</span>  <span class="c1"># 空头</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>                    <span class="n">current_profit</span> <span class="o">=</span> <span class="n">position_dict</span><span class="p">[</span><span class="s1">&#39;positionProfit&#39;</span><span class="p">]</span>
+</span><span id="__span-2-50"><a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>                    <span class="n">holding_direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</span><span id="__span-2-51"><a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>                    <span class="n">holding_size</span> <span class="o">=</span> <span class="n">position_dict</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span>
+</span><span id="__span-2-52"><a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>
+</span><span id="__span-2-53"><a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>        <span class="c1"># 通过generate_features生成趋势信号</span>
+</span><span id="__span-2-54"><a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>        <span class="n">signal</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_features</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span>
+</span><span id="__span-2-55"><a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+</span><span id="__span-2-56"><a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>        <span class="c1"># 通过日志记录交易信号</span>
+</span><span id="__span-2-57"><a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;交易信号</span><span class="si">{</span><span class="n">signal</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span><span id="__span-2-58"><a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>
+</span><span id="__span-2-59"><a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>        <span class="c1"># 获取最新价格</span>
+</span><span id="__span-2-60"><a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>        <span class="n">df</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">broker</span><span class="o">.</span><span class="n">get_candles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span> <span class="n">granularity</span><span class="o">=</span><span class="n">CandlesPeriod</span><span class="o">.</span><span class="n">MIN_1</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">end_time</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+</span><span id="__span-2-61"><a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>        <span class="n">close</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">]</span>
+</span><span id="__span-2-62"><a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>        <span class="n">current_price</span> <span class="o">=</span> <span class="n">close</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-2-63"><a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>
+</span><span id="__span-2-64"><a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>        <span class="n">orders</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="__span-2-65"><a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>        <span class="c1"># 多头持仓情况</span>
+</span><span id="__span-2-66"><a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>        <span class="k">if</span> <span class="n">holding_direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-67"><a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>            <span class="c1"># 若趋势方向不为多头，平多仓：</span>
+</span><span id="__span-2-68"><a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>            <span class="k">if</span> <span class="n">signal</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-69"><a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>                <span class="n">close_long_tdposition</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-70"><a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>                        <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-71"><a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>                        <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Short</span><span class="p">,</span>
+</span><span id="__span-2-72"><a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>                        <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Close</span><span class="p">,</span>
+</span><span id="__span-2-73"><a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a>                        <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-74"><a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>                        <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-75"><a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a>                        <span class="n">size</span><span class="o">=</span><span class="n">holding_size</span>
+</span><span id="__span-2-76"><a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>                    <span class="p">)</span>
+</span><span id="__span-2-77"><a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">close_long_tdposition</span><span class="p">)</span>
+</span><span id="__span-2-78"><a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>
+</span><span id="__span-2-79"><a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>            <span class="k">if</span> <span class="n">signal</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-80"><a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-81"><a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>                <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-82"><a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>                <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Short</span><span class="p">,</span>
+</span><span id="__span-2-83"><a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>                <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Open</span><span class="p">,</span>
+</span><span id="__span-2-84"><a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a>                <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-85"><a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>                <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-86"><a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a>                <span class="n">size</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-2-87"><a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>            <span class="p">))</span>
+</span><span id="__span-2-88"><a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>
+</span><span id="__span-2-89"><a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a>
+</span><span id="__span-2-90"><a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a>        <span class="c1"># 空头持仓情况</span>
+</span><span id="__span-2-91"><a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>        <span class="k">elif</span> <span class="n">holding_direction</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-92"><a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a>            <span class="c1"># 若趋势方向不为空头，平空仓：</span>
+</span><span id="__span-2-93"><a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a>            <span class="k">if</span> <span class="n">signal</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-94"><a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a>                <span class="n">close_short_tdposition</span> <span class="o">=</span> <span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-95"><a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a>                        <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-96"><a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a>                        <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Long</span><span class="p">,</span>
+</span><span id="__span-2-97"><a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a>                        <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Close</span><span class="p">,</span>
+</span><span id="__span-2-98"><a id="__codelineno-2-98" name="__codelineno-2-98" href="#__codelineno-2-98"></a>                        <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-99"><a id="__codelineno-2-99" name="__codelineno-2-99" href="#__codelineno-2-99"></a>                        <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-100"><a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a>                        <span class="n">size</span><span class="o">=</span><span class="n">holding_size</span>
+</span><span id="__span-2-101"><a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a>                    <span class="p">)</span>
+</span><span id="__span-2-102"><a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">close_short_tdposition</span><span class="p">)</span>
+</span><span id="__span-2-103"><a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a>
+</span><span id="__span-2-104"><a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a>
+</span><span id="__span-2-105"><a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a>            <span class="c1"># 若有趋势为多，开多仓</span>
+</span><span id="__span-2-106"><a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a>            <span class="k">if</span> <span class="n">signal</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-107"><a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-108"><a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a>                <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-109"><a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a>                <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Long</span><span class="p">,</span>
+</span><span id="__span-2-110"><a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a>                <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Open</span><span class="p">,</span>
+</span><span id="__span-2-111"><a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a>                <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-112"><a id="__codelineno-2-112" name="__codelineno-2-112" href="#__codelineno-2-112"></a>                <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-113"><a id="__codelineno-2-113" name="__codelineno-2-113" href="#__codelineno-2-113"></a>                <span class="n">size</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-2-114"><a id="__codelineno-2-114" name="__codelineno-2-114" href="#__codelineno-2-114"></a>            <span class="p">))</span>
+</span><span id="__span-2-115"><a id="__codelineno-2-115" name="__codelineno-2-115" href="#__codelineno-2-115"></a>
+</span><span id="__span-2-116"><a id="__codelineno-2-116" name="__codelineno-2-116" href="#__codelineno-2-116"></a>        <span class="c1"># 若有趋势方向</span>
+</span><span id="__span-2-117"><a id="__codelineno-2-117" name="__codelineno-2-117" href="#__codelineno-2-117"></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="__span-2-118"><a id="__codelineno-2-118" name="__codelineno-2-118" href="#__codelineno-2-118"></a>            <span class="k">if</span> <span class="n">signal</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-119"><a id="__codelineno-2-119" name="__codelineno-2-119" href="#__codelineno-2-119"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;开多仓&#39;</span><span class="p">)</span>
+</span><span id="__span-2-120"><a id="__codelineno-2-120" name="__codelineno-2-120" href="#__codelineno-2-120"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-121"><a id="__codelineno-2-121" name="__codelineno-2-121" href="#__codelineno-2-121"></a>                <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-122"><a id="__codelineno-2-122" name="__codelineno-2-122" href="#__codelineno-2-122"></a>                <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Long</span><span class="p">,</span>
+</span><span id="__span-2-123"><a id="__codelineno-2-123" name="__codelineno-2-123" href="#__codelineno-2-123"></a>                <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Open</span><span class="p">,</span>
+</span><span id="__span-2-124"><a id="__codelineno-2-124" name="__codelineno-2-124" href="#__codelineno-2-124"></a>                <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-125"><a id="__codelineno-2-125" name="__codelineno-2-125" href="#__codelineno-2-125"></a>                <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-126"><a id="__codelineno-2-126" name="__codelineno-2-126" href="#__codelineno-2-126"></a>                <span class="n">size</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-2-127"><a id="__codelineno-2-127" name="__codelineno-2-127" href="#__codelineno-2-127"></a>            <span class="p">))</span>
+</span><span id="__span-2-128"><a id="__codelineno-2-128" name="__codelineno-2-128" href="#__codelineno-2-128"></a>            <span class="k">elif</span> <span class="n">signal</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+</span><span id="__span-2-129"><a id="__codelineno-2-129" name="__codelineno-2-129" href="#__codelineno-2-129"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;开空仓&#39;</span><span class="p">)</span>
+</span><span id="__span-2-130"><a id="__codelineno-2-130" name="__codelineno-2-130" href="#__codelineno-2-130"></a>                <span class="n">orders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Order</span><span class="p">(</span>
+</span><span id="__span-2-131"><a id="__codelineno-2-131" name="__codelineno-2-131" href="#__codelineno-2-131"></a>                <span class="n">instrument</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">instrument</span><span class="p">,</span>
+</span><span id="__span-2-132"><a id="__codelineno-2-132" name="__codelineno-2-132" href="#__codelineno-2-132"></a>                <span class="n">direction</span><span class="o">=</span><span class="n">Direction</span><span class="o">.</span><span class="n">Short</span><span class="p">,</span>
+</span><span id="__span-2-133"><a id="__codelineno-2-133" name="__codelineno-2-133" href="#__codelineno-2-133"></a>                <span class="n">offset</span><span class="o">=</span><span class="n">Offset</span><span class="o">.</span><span class="n">Open</span><span class="p">,</span>
+</span><span id="__span-2-134"><a id="__codelineno-2-134" name="__codelineno-2-134" href="#__codelineno-2-134"></a>                <span class="n">order_type</span><span class="o">=</span><span class="n">OrderType</span><span class="o">.</span><span class="n">Market</span><span class="p">,</span>
+</span><span id="__span-2-135"><a id="__codelineno-2-135" name="__codelineno-2-135" href="#__codelineno-2-135"></a>                <span class="n">price</span><span class="o">=</span><span class="n">current_price</span><span class="p">,</span>
+</span><span id="__span-2-136"><a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a>                <span class="n">size</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-2-137"><a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a>            <span class="p">))</span>
+</span><span id="__span-2-138"><a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a>
+</span><span id="__span-2-139"><a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a>
+</span><span id="__span-2-140"><a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a>        <span class="k">return</span> <span class="n">orders</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
