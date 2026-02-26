@@ -7,6 +7,8 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
       
+        <meta name="author" content="igraphicsz">
+      
       
       
         <link rel="prev" href="../%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE/">
@@ -19,11 +21,11 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
-        <title>策略编写 - Leopardseek</title>
+        <title>策略编写 - LeopardSeek</title>
       
     
     
@@ -80,7 +82,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Leopardseek" class="md-header__button md-logo" aria-label="Leopardseek" data-md-component="logo">
+    <a href=".." title="LeopardSeek" class="md-header__button md-logo" aria-label="LeopardSeek" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,7 +96,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Leopardseek
+            LeopardSeek
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -178,13 +180,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Leopardseek" class="md-nav__button md-logo" aria-label="Leopardseek" data-md-component="logo">
+    <a href=".." title="LeopardSeek" class="md-nav__button md-logo" aria-label="LeopardSeek" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Leopardseek
+    LeopardSeek
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -520,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97/" class="md-nav__link">
+      <a href="../%E8%AE%B0%E5%BD%95%E7%AD%96%E7%95%A5%E6%97%A5%E5%BF%97/" class="md-nav__link">
         
   
   
@@ -682,36 +684,27 @@
 <h3 id="_4">策略配置</h3>
 <p>策略配置文件用于定义该策略的所有参数，以及该策略要交易的目标品种。配置文件中 PARAMETERS 字段下的参数会被传入你的策略类中，供你在策略逻辑里调用。</p>
 <p>用户在文件根目录下的 config 文件夹中创建于修改与策略同名的 yaml 文件，用来编辑策略配置。</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># macd.yaml
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>NAME: &#39;macd&#39;                    # 策略名
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>MODULE: &#39;macd&#39;                  # 策略所在模块（与策略名保持一致）
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>CLASS: &#39;MACD&#39;                   # 策略类名
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>INTERVAL: &#39;5min&#39;                # 策略执行周期
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>PARAMETERS:                     # 策略参数
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  macd_fast: 12
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  macd_slow: 26
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>  macd_smoothing: 9
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># macd.yaml</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">NAME</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;macd&#39;</span><span class="w">                    </span><span class="c1"># 策略名</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">MODULE</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;macd&#39;</span><span class="w">                  </span><span class="c1"># 策略所在模块（与策略名保持一致）</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">CLASS</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;MACD&#39;</span><span class="w">                   </span><span class="c1"># 策略类名</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">INTERVAL</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5min&#39;</span><span class="w">                </span><span class="c1"># 策略执行周期</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">PARAMETERS</span><span class="p">:</span><span class="w">                     </span><span class="c1"># 策略参数</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">macd_fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">macd_slow</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">macd_smoothing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>WATCHLIST: [&#39;ao2605&#39;]           # 策略执行的资产代码
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">WATCHLIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;ao2605&#39;</span><span class="p p-Indicator">]</span><span class="w">           </span><span class="c1"># 策略执行的资产代码</span>
 </span></code></pre></div>
 <h3 id="_5">类的实现</h3>
 <p>尽管策略的构建方式极为灵活，但策略类必须包含 <strong>init</strong> 初始化方法和一个名为 generate_signal 的信号生成方法。其中，<strong>init</strong> 方法会在每次实例化策略时被调用。</p>
 <p>默认情况下，LeopardSeek 实例化策略时会传入四个命名参数：</p>
 <ol>
-<li>
-<p>该次实例化中要交易的资产代码（参数名：instrument， 参数类型：str）；</p>
-</li>
-<li>
-<p>策略参数（参数名：parameters， 参数类型：dict）；</p>
-</li>
-<li>
-<p>交易所接口（参数名：broker， 参数类型：Broker）；</p>
-</li>
-<li>
-<p>本资产代码专用的日志（参数名：logger， 参数类型：logging.Logger）</p>
-</li>
+<li>该次实例化中要交易的资产代码（参数名：instrument， 参数类型：str）；</li>
+<li>策略参数（参数名：parameters， 参数类型：dict）；</li>
+<li>交易所接口（参数名：broker， 参数类型：Broker）；</li>
+<li>本资产代码专用的日志（参数名：logger， 参数类型：logging.Logger）。</li>
 </ol>
-<p>。</p>
 <p>除 <strong>init</strong> 方法外，策略类必须实现 generate_signal 方法。每个策略执行周期，LeopardSeek 会调用该方法，且要求该方法返回一个交易委托单（Order）对象或委托单列表：</p>
 <p>做多委托单可通过创建 Order 对象时指定 direction=Direction.Long 实现，做空委托单则指定 direction=Direction.Long。LeopardSeek 中提供了诸多便捷的枚举，详细定义请阅读<a href="../%E4%B8%8B%E5%8D%95/">下单</a>。</p>
 <p>若本次数据更新无交易信号，可直接返回 None 或者空列表([ ])；</p>
@@ -938,7 +931,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
